@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.Alexandria.R
 import com.example.Alexandria.database.*
-import com.example.Alexandria.models.CommonModel
 import com.example.Alexandria.utilits.APP_ACTIVITY
 import hideKeyboard
 import kotlinx.android.synthetic.main.fragment_main_list.*

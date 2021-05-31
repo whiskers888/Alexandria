@@ -11,6 +11,9 @@ lateinit var responseAvgStud:AvgMark
 lateinit var responseGradeBook: GradeBook
 lateinit var responseInboxMail: InboxMail
 lateinit var responseOutpupMail: OutputMail
+lateinit var responseFindUser:FindUser
+lateinit var responseSendMail:SendMail
+
 
 
 // ссылки на API

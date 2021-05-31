@@ -7,13 +7,15 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.content.ContextCompat
 import com.example.Alexandria.database.*
 import com.example.Alexandria.databinding.ActivityMainBinding
-import com.example.Alexandria.models.UserModel
 import com.example.Alexandria.ui.objects.AppDrawer
+import com.example.Alexandria.ui.screens.NoInternetFragment
 import com.example.Alexandria.ui.screens.main_list.MainListFragment
 import com.example.Alexandria.utilits.APP_ACTIVITY
 import com.example.Alexandria.utilits.READ_CONTACTS
-import initContacts
+import isOnline
+
 import replaceFragment
+import showToast
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,9 +28,14 @@ class MainActivity : AppCompatActivity() {
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
         APP_ACTIVITY = this
-        USER1 = UserModel()
-        initFields()
-        initFunc()
+        APP_ACTIVITY.title = "Alexandria"
+        if(isOnline(APP_ACTIVITY)){
+            initFields()
+            initFunc()
+        }else{
+            replaceFragment(NoInternetFragment())
+        }
+
     }
 
 
@@ -66,7 +73,7 @@ class MainActivity : AppCompatActivity() {
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (ContextCompat.checkSelfPermission(APP_ACTIVITY, READ_CONTACTS) == PackageManager.PERMISSION_GRANTED){
-            initContacts()
+            showToast("Разрешение получено")
         }
     }
 }

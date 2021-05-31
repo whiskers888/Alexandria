@@ -7,9 +7,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.Alexandria.R
 import com.example.Alexandria.requestDataClass.MessagesInboxMail
-import de.hdodenhof.circleimageview.CircleImageView
-import downloadAndSetImage
 import kotlinx.android.synthetic.main.item_message.view.*
+import replaceFragment
 
 class InputMailAdapter : RecyclerView.Adapter<InputMailAdapter.MainListHolder>(){
 
@@ -33,6 +32,10 @@ class InputMailAdapter : RecyclerView.Adapter<InputMailAdapter.MainListHolder>()
     override fun getItemCount(): Int = listItems.size
 
     override fun onBindViewHolder(holder: MainListHolder, position: Int) {
+        holder.itemView.setOnClickListener{
+            replaceFragment(AboutInMailFragment(listItems[holder.adapterPosition]))
+        }
+
         val message = listItems[position].message.markdownMessage
         if (message.length > 20){
             holder.userReceivedMessage.text = "${listItems[position].message.markdownMessage.substring(0,20)} ..."

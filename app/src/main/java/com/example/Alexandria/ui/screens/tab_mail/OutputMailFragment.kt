@@ -23,6 +23,7 @@ class OutputMailFragment : Fragment() {
         getOutputMail{
             initRecyclerView()
         }
+
     }
 
     private fun initRecyclerView() {

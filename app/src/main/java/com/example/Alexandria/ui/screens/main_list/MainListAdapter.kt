@@ -6,15 +6,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.Alexandria.R
-import com.example.Alexandria.database.responseFeedStud
-import com.example.Alexandria.models.CommonModel
 import com.example.Alexandria.requestDataClass.Feed
-import com.example.Alexandria.requestDataClass.FeedStud
-import com.example.Alexandria.ui.screens.single_chat.SingleChatFragment
-import de.hdodenhof.circleimageview.CircleImageView
-import downloadAndSetImage
 import kotlinx.android.synthetic.main.main_list_item.view.*
-import replaceFragment
 
 class MainListAdapter : RecyclerView.Adapter<MainListAdapter.MainListHolder>(){
 
@@ -28,7 +21,7 @@ class MainListAdapter : RecyclerView.Adapter<MainListAdapter.MainListHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.main_list_item,parent,false)
-        val holder = MainListHolder(view)
+        val holder: MainListHolder = MainListHolder(view)
 //        holder.itemView.setOnClickListener{
 //            replaceFragment(SingleChatFragment(listItems[holder.adapterPosition]))
 //        }

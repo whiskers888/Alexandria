@@ -6,10 +6,11 @@ import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
 import com.example.Alexandria.requestDataClass.*
 import com.example.Alexandria.utilits.APP_ACTIVITY
+import com.google.gson.Gson
 import org.json.JSONObject
 import showToast
 
-
+private val gson = Gson()
 lateinit var token: MutableMap<String, String>
 
 val queue = Volley.newRequestQueue(APP_ACTIVITY)
@@ -166,4 +167,63 @@ fun getOutputMail(function: () -> Unit) {
     }
 // Add the request to the RequestQueue.
     queue.add(getOutputMail)
+}
+
+fun findUser(name: String, function: (responseFindUser:FindUser) -> Unit) {
+    val encodedName = java.net.URLEncoder.encode(name,"utf-8")
+    val requestFindUser =object: StringRequest(Method.GET, findUserR+encodedName,
+        Response.Listener<String> { response ->
+            responseFindUser = gson.fromJson(response, FindUser::class.java)
+            function(responseFindUser)
+        },
+        Response.ErrorListener { response ->
+            showToast("sendMail: That didn't work!${response.networkResponse.statusCode}")}){
+        override fun getBodyContentType(): String {
+            return "application/json;charset=utf-8"
+        }
+
+        override fun getHeaders(): MutableMap<String, String> {
+            return token
+        }
+    }
+// Add the request to the RequestQueue.
+    queue.add(requestFindUser)
+}
+
+fun sendMail(themeMsg:String,msgToUser:String,userID:String,userEmail:String,userFio:String) {
+    val requestSendMail =object: StringRequest(Method.POST, InboxMailR,
+        Response.Listener<String> { response ->
+            responseSendMail = gson.fromJson(response, SendMail::class.java)
+        },
+        Response.ErrorListener { response ->
+            showToast("sendMail: That didn't work!${response.networkResponse.statusCode}")}){
+        override fun getBodyContentType(): String {
+            return "application/json;charset=utf-8"
+        }
+
+        override fun getHeaders(): MutableMap<String, String> {
+            return token
+        }
+
+        @Throws(AuthFailureError::class)
+        override fun getBody(): ByteArray {
+            val userToID = HashMap<String, String>()
+            userToID["id"] = userID
+            userToID["email"] = userEmail
+            userToID["fio"] = userFio
+
+            val payload = HashMap<String, Any>()
+            payload["htmlMessage"] = ""
+            payload["message"] = ""
+
+            payload["markdownMessage"]= msgToUser
+            payload["theme"] = themeMsg
+            payload["userToID"] = listOf(userToID)
+            return JSONObject(payload as Map<*, *>).toString().toByteArray()
+
+        }
+
+    }
+// Add the request to the RequestQueue.
+    queue.add(requestSendMail)
 }

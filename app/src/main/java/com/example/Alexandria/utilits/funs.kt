@@ -1,25 +1,22 @@
-import com.example.Alexandria.utilits.APP_ACTIVITY
-import com.example.Alexandria.utilits.READ_CONTACTS
-import com.example.Alexandria.utilits.checkPermission
-import com.example.Alexandria.database.updatePhonesToDatabase
 import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.net.Uri
-import android.provider.ContactsContract
 import android.provider.OpenableColumns
+import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.appcompat.widget.AppCompatDrawableManager.preload
-import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.Alexandria.MainActivity
 import com.example.Alexandria.R
-import com.example.Alexandria.models.CommonModel
+import com.example.Alexandria.utilits.APP_ACTIVITY
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.*
+
 // Утилитарные функции доступные во всем приложении
 fun showToast(message:String){
     Toast.makeText(APP_ACTIVITY,message,Toast.LENGTH_SHORT).show()
@@ -62,31 +59,6 @@ fun ImageView.downloadAndSetImage(url:String){
         .into(this)
 }
 
-fun initContacts() {
-    if (checkPermission(READ_CONTACTS)){
-        val arrayContacts = arrayListOf<CommonModel>()
-        val cursor = APP_ACTIVITY.contentResolver.query(
-            ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-            null,
-            null,
-            null,
-            null
-        )
-        cursor?.let {
-            while(it.moveToNext()){
-                val fullName = it.getString(it.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
-                val phone = it.getString(it.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER))
-                val newModel = CommonModel()
-                newModel.fullname = fullName
-                newModel.phone = phone.replace(Regex("[\\s,-]"),"")
-
-                arrayContacts.add(newModel)
-            }
-        }
-        cursor?.close()
-        updatePhonesToDatabase(arrayContacts)
-    }
-}
 
 fun String.asTime(): String {
     val time = Date(this.toLong())
@@ -110,7 +82,29 @@ fun getFileNameFromUri(uri: Uri): String {
 }
 
 fun showPreload(viewPreload:ImageView){
+    Glide.with(APP_ACTIVITY).load(R.drawable.preloader).into(viewPreload)
+}
 
-    Glide.with(APP_ACTIVITY).load("https://99px.ru/sstorage/86/2016/06/image_861406162035182839320.gif").into(viewPreload)
-
+fun isOnline(context: Context): Boolean {
+    val connectivityManager =
+        context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val capabilities =
+        connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+    if (capabilities != null) {
+        when {
+            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> {
+                Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
+                return true
+            }
+            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> {
+                Log.i("Internet", "NetworkCapabilities.TRANSPORT_WIFI")
+                return true
+            }
+            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> {
+                Log.i("Internet", "NetworkCapabilities.TRANSPORT_ETHERNET")
+                return true
+            }
+        }
+    }
+    return false
 }
