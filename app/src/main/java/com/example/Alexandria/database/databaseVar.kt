@@ -1,0 +1,32 @@
+package com.example.Alexandria.database
+
+import androidx.fragment.app.FragmentPagerAdapter
+import com.example.Alexandria.requestDataClass.*
+
+
+lateinit var responseInfoToken: InfoToken
+lateinit var responseInfoStud:UserInfo
+lateinit var responseFeedStud: FeedStud
+lateinit var responseAvgStud:AvgMark
+lateinit var responseGradeBook: GradeBook
+lateinit var responseInboxMail: InboxMail
+lateinit var responseOutpupMail: OutputMail
+
+
+// ссылки на API
+const val host = "https://stud.sssu.ru/api" // Тестовый -
+const val tokenAuthR = "$host/tokenauth"
+const val getUserInfoR = "$host/UserInfo/Student?studentID="
+const val getFeedStudR = "$host/Feed?userID="
+const val avgScoreR = "$host/EducationalActivity/StudentAvgMark?studentID="
+const val checkOutputMailR = "$host/Mail/InboxMail?type=1&page=1&pageEl=15&searchQuery="
+const val InboxMailR = "$host/Mail/InboxMail"
+const val outputMailR = "$host/Mail/InboxMail?type=1"
+const val statisticsMarksCountR = "$host/EducationalActivity/StatisticsMarksCount?studentID="
+const val getGradeBookR = "$host/EducationalActivity/ZachBook?studentID="
+const val getListCoursesR = "$host/ElectronicEducation/ListCourse?"
+const val getCourseInfoR = "$host/ElectronicEducation/ListCourse?courseID="
+const val getCourseThemesR = "$host/ElectronicEducation/ListCourseThemes?courseID="
+const val getInfoTaskR = "$host/ElectronicEducation/ListCourseStudents?courseID="
+const val findUserR = "$host/Mail/Find/Students?fio="
+const val uploadFileR = "https://test.mmis.ru/api/ElectronicEducation/FileSave"
