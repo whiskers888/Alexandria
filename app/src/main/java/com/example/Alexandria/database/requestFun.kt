@@ -31,8 +31,8 @@ fun tokenAuthRequest(mEmail: String, mPass: String, function: () -> Unit) {
         @Throws(AuthFailureError::class)
         override fun getBody(): ByteArray {
             val payload = HashMap<String, String>()
-            payload["userName"] = "justie.howard@gmail.com" // student // mEmail
-            payload["password"] = "s83" // testMe // mPass
+            payload["userName"] = "justie.howard@gmail.com" // student // justie.howard@gmail.com
+            payload["password"] = "s83" // testMe // s83
             return JSONObject(payload as Map<*, *>).toString().toByteArray()
         }
     }
@@ -48,8 +48,8 @@ fun getInfoStud(function: () -> Unit) {
             function()
         },
         Response.ErrorListener { response ->
-           showToast("getInfoStud: That didn't work!${response.networkResponse}\n" +
-                   " Напишите в поддержку и попробуйте позже") }){
+            showToast("getInfoStud: That didn't work!${response.networkResponse}\n" +
+                    " Напишите в поддержку и попробуйте позже") }){
         override fun getBodyContentType(): String {
             return "application/json"
         }
@@ -226,4 +226,24 @@ fun sendMail(themeMsg:String,msgToUser:String,userID:String,userEmail:String,use
     }
 // Add the request to the RequestQueue.
     queue.add(requestSendMail)
+}
+
+fun getListCourse(function: () -> Unit) {
+    val getListCourse =object: StringRequest(Method.GET, getListCoursesR,
+        Response.Listener<String> { response ->
+            responseListCourse = gson.fromJson(response, ListCourse::class.java)
+            function()
+        },
+        Response.ErrorListener { response ->
+            showToast("getListCourses: That didn't work!${response.networkResponse}")}){
+        override fun getBodyContentType(): String {
+            return "application/json"
+        }
+        override fun getHeaders(): MutableMap<String, String> {
+            val headers = token
+            return headers
+        }
+    }
+// Add the request to the RequestQueue.
+    queue.add(getListCourse)
 }

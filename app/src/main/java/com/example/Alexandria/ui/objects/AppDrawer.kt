@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout
 import com.example.Alexandria.R
 import com.example.Alexandria.utilits.APP_ACTIVITY
 import com.example.Alexandria.database.responseInfoStud
+import com.example.Alexandria.ui.screens.course.CourseFragment
 import com.example.Alexandria.ui.screens.grade_book.GradeBookFragment
 import com.example.Alexandria.ui.screens.profile_user.ProfileFragment
 import com.example.Alexandria.ui.screens.tab_mail.ViewPagerFragment
@@ -113,6 +114,7 @@ class AppDrawer {
         when (position) {
             1 -> replaceFragment(ProfileFragment())
             2 -> replaceFragment(ViewPagerFragment())
+            3 -> replaceFragment(CourseFragment())
             4 -> replaceFragment(GradeBookFragment())
         }
     }

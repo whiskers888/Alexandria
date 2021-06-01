@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    style="@style/settingsButtons"
+    android:layout_margin="@dimen/app_margin"
+    android:layout_height="150dp">
+
+
+    <ImageView
+        android:id="@+id/card_holder"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:src="@drawable/btn_try_internet"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/item_course_dis"
+        android:textSize="18sp"
+        android:layout_marginTop="@dimen/app_small_margin"
+        android:layout_width="match_parent"
+        android:text="Дисциплина"
+        android:maxLines="2"
+        android:textColor="@color/colorAccentSmallDark"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="0dp" />
+
+    <View
+        android:layout_width="wrap_content"
+        android:layout_height="1dp"
+        android:background="@color/colorGrey"
+        app:layout_constraintEnd_toEndOf="@id/card_holder"
+        app:layout_constraintStart_toStartOf="@id/card_holder"
+        app:layout_constraintTop_toBottomOf="@id/item_course_dis" />
+
+
+    <TextView
+        android:id="@+id/item_course_wait"
+        style="@style/normalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="150dp"
+        android:text="На проверке:"
+        android:textColor="@color/colorAccentSmallDark"
+        app:layout_constraintBottom_toTopOf="@+id/item_course_time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/item_course_prepod"
+        app:layout_constraintTop_toBottomOf="@+id/item_course_dis"
+        app:layout_goneMarginStart="0dp" />
+
+    <TextView
+        android:id="@+id/item_course_sucs_task"
+        style="@style/normalText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="150dp"
+        android:text="Выполнено:"
+        android:textColor="@color/colorAccentSmallDark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_course_wait"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/item_course_time"
+        app:layout_goneMarginStart="0dp" />
+
+    <TextView
+        android:id="@+id/item_course_prepod"
+        style="@style/normalText"
+        android:maxWidth="120dp"
+        android:maxLines="2"
+        android:layout_marginStart="@dimen/app_margin"
+        android:text="Преподаватель"
+        android:textColor="@color/colorAccentSmallDark"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toTopOf="@id/item_course_time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_course_dis" />
+    <TextView
+        android:id="@+id/item_course_time"
+        style="@style/normalText"
+        android:maxWidth="120dp"
+        android:layout_marginStart="@dimen/app_margin"
+        android:text="Дата создания"
+        android:textColor="@color/colorAccentSmallDark"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/item_course_prepod" />
+</androidx.constraintlayout.widget.ConstraintLayout>

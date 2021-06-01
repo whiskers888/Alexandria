@@ -1,6 +1,5 @@
 package com.example.Alexandria.database
 
-import androidx.fragment.app.FragmentPagerAdapter
 import com.example.Alexandria.requestDataClass.*
 
 
@@ -13,11 +12,15 @@ lateinit var responseInboxMail: InboxMail
 lateinit var responseOutpupMail: OutputMail
 lateinit var responseFindUser:FindUser
 lateinit var responseSendMail:SendMail
+lateinit var responseListCourse:ListCourse
+
 
 
 
 // ссылки на API
-const val host = "https://stud.sssu.ru/api" // Тестовый -
+const val originalHost = "https://stud.sssu.ru/api"
+const val testHost = "https://test.mmis.ru/api"
+const val host =  originalHost
 const val tokenAuthR = "$host/tokenauth"
 const val getUserInfoR = "$host/UserInfo/Student?studentID="
 const val getFeedStudR = "$host/Feed?userID="
