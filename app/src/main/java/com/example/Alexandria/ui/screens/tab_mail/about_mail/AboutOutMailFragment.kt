@@ -1,14 +1,14 @@
-package com.example.Alexandria.ui.screens.tab_mail
+package com.example.Alexandria.ui.screens.tab_mail.about_mail
 
 import com.example.Alexandria.R
-import com.example.Alexandria.requestDataClass.MessagesInboxMail
+import com.example.Alexandria.requestDataClass.Messages
 import com.example.Alexandria.ui.screens.base.BaseFragment
 import com.example.Alexandria.utilits.APP_ACTIVITY
 import kotlinx.android.synthetic.main.mail_message.*
 
-class AboutInMailFragment(messages: MessagesInboxMail) : BaseFragment(R.layout.mail_message) {
+class AboutOutMailFragment(messages: Messages) : BaseFragment(R.layout.mail_message) {
 
-    val fullname = messages.userIdFromMessage
+    val fullname = messages.userIdToMessage
     val theme = messages.message.theme
     val msg = messages.message.markdownMessage
     override fun onStart() {

@@ -31,4 +31,5 @@
     <string name="clean_chat">Очистить чат</string>
     <string name="delete_chat">Удалить чат</string>
     <string name="profile_text_user_info">Личная информация</string>
+    <string name="author_text">Автор</string>
 </resources>

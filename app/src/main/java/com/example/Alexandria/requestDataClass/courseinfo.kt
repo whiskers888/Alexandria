@@ -33,10 +33,21 @@ data class ParamFormatsFilesCourseInfo (
 data class DataCourseInform (
 
     @SerializedName("courseInfo") var courseInfo : CourseInfo,
-    @SerializedName("authorsList") var authorsList : List<String>,
+    @SerializedName("authorsList") var authorsList : List<AuthorInfo>,
     @SerializedName("paramFormatsFiles") var paramFormatsFiles : ParamFormatsFilesCourseInfo,
     @SerializedName("maxLengthFileLink") var maxLengthFileLink : Int,
     @SerializedName("maxFileSize") var maxFileSize : String,
     @SerializedName("accessView") var accessView : Boolean
+
+)
+
+data class AuthorInfo (
+
+    @SerializedName("courseInfo") var fio : String,
+    @SerializedName("authorsList") var id : Int,
+    @SerializedName("paramFormatsFiles") var imgAddr : String,
+    @SerializedName("maxLengthFileLink") var mainAuthor : Boolean,
+    @SerializedName("maxFileSize") var teacherID : Int,
+    @SerializedName("accessView") var userID : Int
 
 )

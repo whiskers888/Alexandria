@@ -31,8 +31,8 @@ fun tokenAuthRequest(mEmail: String, mPass: String, function: () -> Unit) {
         @Throws(AuthFailureError::class)
         override fun getBody(): ByteArray {
             val payload = HashMap<String, String>()
-            payload["userName"] = "justie.howard@gmail.com" // student // justie.howard@gmail.com
-            payload["password"] = "s83" // testMe // s83
+            payload["userName"] = "student" // student // justie.howard@gmail.com
+            payload["password"] = "testMe" // testMe // s83
             return JSONObject(payload as Map<*, *>).toString().toByteArray()
         }
     }
@@ -246,4 +246,46 @@ fun getListCourse(function: () -> Unit) {
     }
 // Add the request to the RequestQueue.
     queue.add(getListCourse)
+}
+
+fun getThemesTask(courseID:String,function: () -> Unit) {
+    val url = getCourseThemesR + courseID // ВЫБРАТЬ КУРС ОБЯЗАТЕЛЬНО
+    val getThemesTask =object: StringRequest(Method.GET, url,
+        Response.Listener<String> { response ->
+            responseCourseThemes = gson.fromJson(response, СourseThemes::class.java)
+            function()
+        },
+        Response.ErrorListener { response ->
+           showToast("getThemesTask: That didn't work!${response.networkResponse}")}){
+        override fun getBodyContentType(): String {
+            return "application/json"
+        }
+        override fun getHeaders(): MutableMap<String, String> {
+            val headers = token
+            return headers
+        }
+    }
+// Add the request to the RequestQueue.
+    queue.add(getThemesTask)
+}
+
+fun getInfoCourse(courseID:String,function: () -> Unit) {
+    val url = getCourseInfoR + courseID +"&infoCourse=true" // ВЫБРАТЬ КУРС ОБЯЗАТЕЛЬНО
+    val getInfoCourse =object: StringRequest(Method.GET, url,
+        Response.Listener<String> { response ->
+            responseCourseInfo = gson.fromJson(response, СourseInform::class.java)
+            function()
+        },
+        Response.ErrorListener { response ->
+            showToast("getThemesTask: That didn't work!${response.networkResponse}")}){
+        override fun getBodyContentType(): String {
+            return "application/json"
+        }
+        override fun getHeaders(): MutableMap<String, String> {
+            val headers = token
+            return headers
+        }
+    }
+// Add the request to the RequestQueue.
+    queue.add(getInfoCourse)
 }

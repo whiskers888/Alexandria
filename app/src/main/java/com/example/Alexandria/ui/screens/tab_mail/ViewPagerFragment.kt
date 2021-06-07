@@ -2,6 +2,8 @@ package com.example.Alexandria.ui.screens.tab_mail
 
 import com.example.Alexandria.R
 import com.example.Alexandria.ui.screens.base.BaseFragment
+import com.example.Alexandria.ui.screens.tab_mail.input_mail.InputMailFragment
+import com.example.Alexandria.ui.screens.tab_mail.ouptup_mail.OutputMailFragment
 import com.example.Alexandria.utilits.APP_ACTIVITY
 import hideKeyboard
 import kotlinx.android.synthetic.main.fragment_tab_view.*

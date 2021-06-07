@@ -8,9 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.Alexandria.R
 import com.example.Alexandria.requestDataClass.DataListCourse
 import com.example.Alexandria.utilits.APP_ACTIVITY
-import kotlinx.android.synthetic.main.fragment_list_course.view.*
 import kotlinx.android.synthetic.main.item_course.view.*
-
+import replaceFragment
 
 
 class CourseAdapter: RecyclerView.Adapter<CourseAdapter.MainListHolder>(){
@@ -40,6 +39,10 @@ class CourseAdapter: RecyclerView.Adapter<CourseAdapter.MainListHolder>(){
     override fun getItemCount(): Int = listItems.size
 
     override fun onBindViewHolder(holder: MainListHolder, position: Int) {
+
+        holder.itemView.setOnClickListener{
+            replaceFragment(TaskFragment(listItems[position].courseID.toString()))
+        }
 
         if (listItems.isNullOrEmpty()){
             holder.itemView.visibility = View.GONE
