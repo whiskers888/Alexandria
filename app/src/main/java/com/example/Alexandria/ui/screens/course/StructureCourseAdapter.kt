@@ -7,12 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.Alexandria.R
 import com.example.Alexandria.requestDataClass.*
-import com.example.Alexandria.utilits.APP_ACTIVITY
-import kotlinx.android.synthetic.main.author_item.view.*
-import kotlinx.android.synthetic.main.file_item.view.*
 import kotlinx.android.synthetic.main.info_course_item.view.*
-import kotlinx.android.synthetic.main.item_course.view.*
-import replaceFragment
 
 
 class StructureCourseAdapter: RecyclerView.Adapter<StructureCourseAdapter.MainListHolder>(){
@@ -26,9 +21,9 @@ class StructureCourseAdapter: RecyclerView.Adapter<StructureCourseAdapter.MainLi
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.info_course_item,parent,false)
-        val holder = MainListHolder(view)
-        return holder
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.info_course_item, parent, false)
+        return MainListHolder(view)
     }
 
     override fun getItemCount(): Int = listItems.size

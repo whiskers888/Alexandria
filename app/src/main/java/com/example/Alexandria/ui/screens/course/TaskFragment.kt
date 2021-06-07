@@ -5,12 +5,13 @@ import com.example.Alexandria.R
 import com.example.Alexandria.database.*
 import com.example.Alexandria.ui.screens.base.BaseFragment
 import com.example.Alexandria.utilits.APP_ACTIVITY
-import kotlinx.android.synthetic.main.fragment_list_course.*
 import kotlinx.android.synthetic.main.fragment_task.*
 
 class TaskFragment(courseID: String) : BaseFragment(R.layout.fragment_task){
 
-    private lateinit var mRecyclerView: RecyclerView
+    private lateinit var mRecyclerViewAuthor: RecyclerView
+    private lateinit var mRecyclerViewStructureCourse: RecyclerView
+    private lateinit var mRecyclerViewFileCourse: RecyclerView
     private lateinit var mStructureCourseAdapter:StructureCourseAdapter
     private lateinit var mFileCourseAdapter: FileCourseAdapter
     private lateinit var mAuthorAdapter:AuthorAdapter
@@ -31,7 +32,7 @@ class TaskFragment(courseID: String) : BaseFragment(R.layout.fragment_task){
 
     }
     private fun initAuthorAdapter() {
-        mRecyclerView = author_list
+        mRecyclerViewAuthor = author_list
         mAuthorAdapter = AuthorAdapter()
 
         val listCourse = responseCourseInfo.data.authorsList
@@ -39,11 +40,11 @@ class TaskFragment(courseID: String) : BaseFragment(R.layout.fragment_task){
             mAuthorAdapter.updateListItems(i)
         }
 
-        mRecyclerView.adapter = mAuthorAdapter
+        mRecyclerViewAuthor.adapter = mAuthorAdapter
     }
 
     private fun initStructureCourseAdapter() {
-        mRecyclerView = structure_course_list
+        mRecyclerViewStructureCourse = structure_course_list
         mStructureCourseAdapter = StructureCourseAdapter()
 
         val listCourse = responseCourseThemes.data.listCourseThemes
@@ -51,11 +52,11 @@ class TaskFragment(courseID: String) : BaseFragment(R.layout.fragment_task){
             mStructureCourseAdapter.updateListItems(i)
         }
 
-        mRecyclerView.adapter = mStructureCourseAdapter
+        mRecyclerViewStructureCourse.adapter = mStructureCourseAdapter
     }
 
     private fun initFileCourseAdapter() {
-        mRecyclerView = list_file
+        mRecyclerViewFileCourse = list_file
         mFileCourseAdapter = FileCourseAdapter()
 
         val listFile = responseCourseThemes.data.listFiles
@@ -63,7 +64,7 @@ class TaskFragment(courseID: String) : BaseFragment(R.layout.fragment_task){
             mFileCourseAdapter.updateListItems(i)
         }
 
-        mRecyclerView.adapter = mFileCourseAdapter
+        mRecyclerViewFileCourse.adapter = mFileCourseAdapter
     }
 
 
