@@ -2,7 +2,7 @@ package com.example.Alexandria.requestDataClass
 
 import com.google.gson.annotations.SerializedName
 
-data class СourseThemes (
+data class  СourseThemesFile (
 
     @SerializedName("data") var data : DataCourseThemes,
     @SerializedName("state") var state : Int,
@@ -33,7 +33,7 @@ data class ListCourseThemes (
     @SerializedName("courseThemeID") var courseThemeID : Int,
     @SerializedName("courseID") var courseID : Int,
     @SerializedName("name") var name : String,
-    @SerializedName("parentID") var parentID : String,
+    @SerializedName("parentID") var parentID : Int,
     @SerializedName("npp") var npp : String,
     @SerializedName("isDelete") var isDelete : Boolean
 

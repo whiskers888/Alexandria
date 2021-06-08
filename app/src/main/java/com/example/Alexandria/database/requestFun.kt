@@ -1,5 +1,6 @@
 package com.example.Alexandria.database
 
+import android.util.Log
 import com.android.volley.AuthFailureError
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
@@ -150,7 +151,7 @@ fun getInboxMail(function: () -> Unit) {
 fun getOutputMail(function: () -> Unit) {
     val getOutputMail =object: StringRequest(Method.GET, outputMailR,
         Response.Listener<String> { response ->
-            responseOutpupMail = gson.fromJson(response, OutputMail::class.java)
+            responseOutputMail = gson.fromJson(response, OutputMail::class.java)
 //            showToast("Response is: ${responseInfoStud}")
             function()
         },
@@ -248,17 +249,18 @@ fun getListCourse(function: () -> Unit) {
     queue.add(getListCourse)
 }
 
-fun getThemesTask(courseID:String,function: () -> Unit) {
+fun getInfoCourse(courseID:String,function: () -> Unit) {
     val url = getCourseThemesR + courseID // ВЫБРАТЬ КУРС ОБЯЗАТЕЛЬНО
     val getThemesTask =object: StringRequest(Method.GET, url,
         Response.Listener<String> { response ->
-            responseCourseThemes = gson.fromJson(response, СourseThemes::class.java)
+            responseCourseThemes = gson.fromJson(response, СourseThemesFile::class.java)
+            Log.d("1", responseCourseThemes.toString())
             function()
         },
         Response.ErrorListener { response ->
            showToast("getThemesTask: That didn't work!${response.networkResponse}")}){
         override fun getBodyContentType(): String {
-            return "application/json"
+            return "application/json; charset=utf-8"
         }
         override fun getHeaders(): MutableMap<String, String> {
             val headers = token
@@ -269,17 +271,18 @@ fun getThemesTask(courseID:String,function: () -> Unit) {
     queue.add(getThemesTask)
 }
 
-fun getInfoCourse(courseID:String,function: () -> Unit) {
+fun getThemesTask(courseID:String,function: () -> Unit) {
     val url = getCourseInfoR + courseID +"&infoCourse=true" // ВЫБРАТЬ КУРС ОБЯЗАТЕЛЬНО
     val getInfoCourse =object: StringRequest(Method.GET, url,
         Response.Listener<String> { response ->
-            responseCourseInfo = gson.fromJson(response, СourseInform::class.java)
+            responseCourseInfo = gson.fromJson(response, CourseInform::class.java)
+            Log.d("1", response)
             function()
         },
         Response.ErrorListener { response ->
             showToast("getThemesTask: That didn't work!${response.networkResponse}")}){
         override fun getBodyContentType(): String {
-            return "application/json"
+            return "application/json; charset=utf-8"
         }
         override fun getHeaders(): MutableMap<String, String> {
             val headers = token

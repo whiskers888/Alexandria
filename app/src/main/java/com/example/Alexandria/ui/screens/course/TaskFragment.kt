@@ -7,7 +7,7 @@ import com.example.Alexandria.ui.screens.base.BaseFragment
 import com.example.Alexandria.utilits.APP_ACTIVITY
 import kotlinx.android.synthetic.main.fragment_task.*
 
-class TaskFragment(courseID: String) : BaseFragment(R.layout.fragment_task){
+class TaskFragment(private val courseID: String) : BaseFragment(R.layout.fragment_task){
 
     private lateinit var mRecyclerViewAuthor: RecyclerView
     private lateinit var mRecyclerViewStructureCourse: RecyclerView
@@ -15,16 +15,15 @@ class TaskFragment(courseID: String) : BaseFragment(R.layout.fragment_task){
     private lateinit var mStructureCourseAdapter:StructureCourseAdapter
     private lateinit var mFileCourseAdapter: FileCourseAdapter
     private lateinit var mAuthorAdapter:AuthorAdapter
-    private val courseID = courseID
 
     override fun onStart() {
         super.onStart()
         APP_ACTIVITY.title = "Задания"
-        getInfoCourse(courseID){
+        getThemesTask(courseID){
             initAuthorAdapter()
         }
 
-        getThemesTask(courseID){
+        getInfoCourse(courseID){
             initStructureCourseAdapter()
             initFileCourseAdapter()
         }
@@ -35,8 +34,8 @@ class TaskFragment(courseID: String) : BaseFragment(R.layout.fragment_task){
         mRecyclerViewAuthor = author_list
         mAuthorAdapter = AuthorAdapter()
 
-        val listCourse = responseCourseInfo.data.authorsList
-        for (i in listCourse) {
+        val listAuthor = responseCourseInfo.data.authorsList
+        for (i in listAuthor) {
             mAuthorAdapter.updateListItems(i)
         }
 

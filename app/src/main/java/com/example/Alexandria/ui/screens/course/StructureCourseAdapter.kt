@@ -21,15 +21,16 @@ class StructureCourseAdapter: RecyclerView.Adapter<StructureCourseAdapter.MainLi
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListHolder {
-        val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.info_course_item, parent, false)
-        return MainListHolder(view)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.info_course_item, parent, false)
+        val holder = MainListHolder(view)
+        return holder
     }
 
     override fun getItemCount(): Int = listItems.size
 
     override fun onBindViewHolder(holder: MainListHolder, position: Int) {
-        holder.numberCourse.text = (position+1).toString()
+        val number = position+1
+        holder.numberCourse.text = number.toString()
         holder.aboutCourse.text = listItems[position].name
     }
 

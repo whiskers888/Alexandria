@@ -85,6 +85,7 @@
             android:layout_marginEnd="@dimen/app_small_margin"
             android:layout_marginStart="@dimen/app_small_margin"
             tools:listitem="@layout/info_course_item"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:background="@color/colorAccent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

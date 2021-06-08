@@ -2,7 +2,7 @@ package com.example.Alexandria.requestDataClass
 
 import com.google.gson.annotations.SerializedName
 
-data class СourseInform (
+data class CourseInform (
 
     @SerializedName("data") var data : DataCourseInform,
     @SerializedName("state") var state : Int,
@@ -20,34 +20,25 @@ data class CourseInfo (
     @SerializedName("isDelete") var isDelete : Boolean
 
 )
-data class ParamFormatsFilesCourseInfo (
-
-    @SerializedName("id") var id : Int,
-    @SerializedName("parameter") var parameter : String,
-    @SerializedName("value") var value : String,
-    @SerializedName("comment") var comment : String,
-    @SerializedName("category") var category : String
-
-)
 
 data class DataCourseInform (
 
     @SerializedName("courseInfo") var courseInfo : CourseInfo,
-    @SerializedName("authorsList") var authorsList : List<AuthorInfo>,
-    @SerializedName("paramFormatsFiles") var paramFormatsFiles : ParamFormatsFilesCourseInfo,
+    @SerializedName("authorsList") var authorsList : List<AuthorsList>,
+    @SerializedName("paramFormatsFiles") var paramFormatsFiles : String,
     @SerializedName("maxLengthFileLink") var maxLengthFileLink : Int,
     @SerializedName("maxFileSize") var maxFileSize : String,
     @SerializedName("accessView") var accessView : Boolean
 
 )
 
-data class AuthorInfo (
+data class AuthorsList (
 
-    @SerializedName("courseInfo") var fio : String,
-    @SerializedName("authorsList") var id : Int,
-    @SerializedName("paramFormatsFiles") var imgAddr : String,
-    @SerializedName("maxLengthFileLink") var mainAuthor : Boolean,
-    @SerializedName("maxFileSize") var teacherID : Int,
-    @SerializedName("accessView") var userID : Int
+    @SerializedName("id") var id : Int,
+    @SerializedName("mainAuthor") var mainAuthor : Boolean,
+    @SerializedName("fio") var fio : String,
+    @SerializedName("userID") var userID : Int,
+    @SerializedName("teacherID") var teacherID : Int,
+    @SerializedName("imgAddr") var imgAddr : String
 
 )

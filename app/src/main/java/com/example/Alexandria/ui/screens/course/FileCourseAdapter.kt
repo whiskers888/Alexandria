@@ -9,7 +9,7 @@ import com.example.Alexandria.R
 import com.example.Alexandria.requestDataClass.DataListCourse
 import com.example.Alexandria.requestDataClass.ListFiles
 import com.example.Alexandria.requestDataClass.TaskInfo
-import com.example.Alexandria.requestDataClass.СourseThemes
+import com.example.Alexandria.requestDataClass.СourseThemesFile
 import com.example.Alexandria.utilits.APP_ACTIVITY
 import kotlinx.android.synthetic.main.file_item.view.*
 import kotlinx.android.synthetic.main.item_course.view.*

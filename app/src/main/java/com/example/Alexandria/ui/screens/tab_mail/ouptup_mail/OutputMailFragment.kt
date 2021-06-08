@@ -7,8 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.example.Alexandria.R
 import com.example.Alexandria.database.getOutputMail
-import com.example.Alexandria.database.responseOutpupMail
-import com.example.Alexandria.ui.screens.tab_mail.ouptup_mail.OutputMailAdapter
+import com.example.Alexandria.database.responseOutputMail
 import kotlinx.android.synthetic.main.tab_input_mail.*
 
 class OutputMailFragment : Fragment() {
@@ -31,7 +30,7 @@ class OutputMailFragment : Fragment() {
         mRecyclerView = item_message_list
         mAdapter =
             OutputMailAdapter()
-        val message = responseOutpupMail.data.messages
+        val message = responseOutputMail.data.messages
         for ( i in message){
             mAdapter.updateListItems(i)
         }

@@ -9,12 +9,12 @@ lateinit var responseFeedStud: FeedStud
 lateinit var responseAvgStud:AvgMark
 lateinit var responseGradeBook: GradeBook
 lateinit var responseInboxMail: InboxMail
-lateinit var responseOutpupMail: OutputMail
+lateinit var responseOutputMail: OutputMail
 lateinit var responseFindUser:FindUser
 lateinit var responseSendMail:SendMail
 lateinit var responseListCourse:ListCourse
-lateinit var responseCourseThemes:СourseThemes
-lateinit var responseCourseInfo:СourseInform
+lateinit var responseCourseThemes:СourseThemesFile
+lateinit var responseCourseInfo:CourseInform
 
 
 

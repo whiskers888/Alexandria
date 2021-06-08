@@ -1,19 +1,20 @@
 package com.example.Alexandria.ui.screens.course
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.Alexandria.R
-import com.example.Alexandria.requestDataClass.AuthorInfo
+import com.example.Alexandria.requestDataClass.AuthorsList
 import kotlinx.android.synthetic.main.author_item.view.*
 
 
 class AuthorAdapter: RecyclerView.Adapter<AuthorAdapter.MainListHolder>(){
 
 
-    private var listItems = mutableListOf<AuthorInfo>()
+    private var listItems = mutableListOf<AuthorsList>()
 
     class MainListHolder(view: View): RecyclerView.ViewHolder(view){
         val statusAuthor:TextView = view.role_author
@@ -22,7 +23,9 @@ class AuthorAdapter: RecyclerView.Adapter<AuthorAdapter.MainListHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.author_item, parent, false)
-        return MainListHolder(view)
+        val holder = MainListHolder(view)
+        Log.d("1",listItems.toString())
+        return holder
     }
 
     override fun getItemCount(): Int = listItems.size
@@ -39,9 +42,7 @@ class AuthorAdapter: RecyclerView.Adapter<AuthorAdapter.MainListHolder>(){
 
     }
 
-
-
-    fun updateListItems(item: AuthorInfo){
+    fun updateListItems(item: AuthorsList){
         listItems.add(item)
         notifyItemInserted(listItems.size)
     }
