@@ -16,23 +16,20 @@ lateinit var token: MutableMap<String, String>
 
 val queue = Volley.newRequestQueue(APP_ACTIVITY)
 
-fun tokenAuthRequest(mEmail: String, mPass: String, function: () -> Unit) {
+fun tokenAuthRequest(mEmail: String, mPass: String, function: (prefSet:LinkedHashSet<String>) -> Unit) {
     val getToken =object: StringRequest(Method.POST, tokenAuthR,
         Response.Listener<String> { response ->
             responseInfoToken = gson.fromJson(response, InfoToken::class.java)
             if (responseInfoToken.msg == "Логин или пароль введен не верно"){
                 showToast(responseInfoToken.data.msg)
             }else{
-                val editor = mSettings.edit()
-                editor.putString(APP_PREFERENCES_TOKEN, responseInfoToken.data.accessToken)
-                editor.apply()
-                editor.putString(APP_PREFERENCES_ID,  responseInfoToken.data.data.id.toString())
-                editor.apply()
 
-
+                val prefSet = LinkedHashSet<String>()
+                prefSet.add(responseInfoToken.data.data.id.toString())
+                prefSet.add(responseInfoToken.data.accessToken)
 //            token["Cookie"] = "authToken="+responseInfoToken.data.accessToken
 //            showToast("Token is received: ${token["Cookie"]?.substring(0,25)}")
-                function(
+                function( prefSet
                 )
             }
         },
@@ -53,7 +50,8 @@ fun tokenAuthRequest(mEmail: String, mPass: String, function: () -> Unit) {
 }
 
 fun getInfoStud(function: () -> Unit) {
-    val url = getUserInfoR+ id
+    //TODO ПОМЕНЯТЬ ТУТ 5 на ID USER
+    val url = getUserInfoR+ "5"
     val stringRequest =object: StringRequest(Method.GET, url,
         Response.Listener<String> { response ->
             responseInfoStud = gson.fromJson(response, UserInfo::class.java)
@@ -270,7 +268,7 @@ fun getInfoCourse(courseID:String,function: () -> Unit) {
             function()
         },
         Response.ErrorListener { response ->
-           showToast("getThemesTask: That didn't work!${response.networkResponse}")}){
+            showToast("getThemesTask: That didn't work!${response.networkResponse}")}){
         override fun getBodyContentType(): String {
             return "application/json; charset=utf-8"
         }
@@ -303,4 +301,24 @@ fun getThemesTask(courseID:String,function: () -> Unit) {
     }
 // Add the request to the RequestQueue.
     queue.add(getInfoCourse)
+}
+fun getTask(courseID:String,function: () -> Unit) {
+    val url = getTask + courseID // ВЫБРАТЬ КУРС ОБЯЗАТЕЛЬНО
+    val getTaskStudent =object: StringRequest(Method.GET, url,
+        Response.Listener<String> { response ->
+            responseStudTask = gson.fromJson(response, StudTask::class.java)
+            function()
+        },
+        Response.ErrorListener { response ->
+            showToast("getThemesTask: That didn't work!${response.networkResponse}")}){
+        override fun getBodyContentType(): String {
+            return "application/json; charset=utf-8"
+        }
+        override fun getHeaders(): MutableMap<String, String> {
+            val headers = token
+            return headers
+        }
+    }
+// Add the request to the RequestQueue.
+    queue.add(getTaskStudent)
 }

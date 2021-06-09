@@ -16,6 +16,7 @@ lateinit var responseSendMail:SendMail
 lateinit var responseListCourse:ListCourse
 lateinit var responseCourseThemes:СourseThemesFile
 lateinit var responseCourseInfo:CourseInform
+lateinit var responseStudTask:StudTask
 lateinit var id:String
 
 
@@ -39,6 +40,7 @@ const val getListCoursesR = "$host/ElectronicEducation/ListCourse?"
 const val getCourseInfoR = "$host/ElectronicEducation/ListCourse?courseID="
 const val getCourseThemesR = "$host/ElectronicEducation/ListCourseThemes?courseID="
 const val getInfoTaskR = "$host/ElectronicEducation/ListCourseStudents?courseID="
+const val getTask = "$host/ElectronicEducation/Task?courseID="
 const val findUserR = "$host/Mail/Find/Students?fio="
 const val uploadFileR = "https://test.mmis.ru/api/ElectronicEducation/FileSave"
 
@@ -48,4 +50,3 @@ const val uploadFileR = "https://test.mmis.ru/api/ElectronicEducation/FileSave"
 lateinit var mSettings: SharedPreferences
 const val APP_PREFERENCES = "token_key"
 const val APP_PREFERENCES_TOKEN = ""
-const val APP_PREFERENCES_ID = ""

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/about_razrab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/normalText"
+        android:text="Связаться с разработчиком приложения можно в следующих социальных сетях\n Github: www.github.com/whiskers888 \n Telegram: @dev_null_exception"/>
+
+    <TextView
+        android:id="@+id/about_org"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/app_margin"
+        app:layout_constraintTop_toBottomOf="@id/about_razrab"
+        app:layout_constraintStart_toStartOf="parent"
+        style="@style/normalText"
+        android:text="Приложение разработано на базе API stud.sssu.ru \n для организации ООО «Лаборатория ММИС» г. Шахты\n EMAIL: manager@mmis.ru"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

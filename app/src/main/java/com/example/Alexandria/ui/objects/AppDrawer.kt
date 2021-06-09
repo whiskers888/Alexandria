@@ -11,6 +11,7 @@ import com.example.Alexandria.database.responseInfoStud
 import com.example.Alexandria.ui.screens.course.CourseFragment
 import com.example.Alexandria.ui.screens.grade_book.GradeBookFragment
 import com.example.Alexandria.ui.screens.profile_user.ProfileFragment
+import com.example.Alexandria.ui.screens.settings.QuestionFragment
 import com.example.Alexandria.ui.screens.settings.SettingsFragment
 import com.example.Alexandria.ui.screens.tab_mail.ViewPagerFragment
 import com.mikepenz.materialdrawer.AccountHeader
@@ -118,6 +119,7 @@ class AppDrawer {
             3 -> replaceFragment(CourseFragment())
             4 -> replaceFragment(GradeBookFragment())
             5 -> replaceFragment(SettingsFragment())
+            7 -> replaceFragment(QuestionFragment())
         }
     }
 

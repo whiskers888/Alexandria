@@ -1,4 +1,4 @@
-package com.example.Alexandria.ui.screens.course
+package com.example.Alexandria.ui.screens.course.task
 
 import android.view.LayoutInflater
 import android.view.View
@@ -22,7 +22,10 @@ class StructureCourseAdapter: RecyclerView.Adapter<StructureCourseAdapter.MainLi
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.info_course_item, parent, false)
-        val holder = MainListHolder(view)
+        val holder =
+            MainListHolder(
+                view
+            )
         return holder
     }
 

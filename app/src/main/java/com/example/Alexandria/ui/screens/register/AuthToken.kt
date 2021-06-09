@@ -24,7 +24,10 @@ class AuthToken : Fragment(R.layout.fragment_auth) {
         } else {
             mEmail = register_input_login.text.toString()
             mPass = register_input_pass.text.toString()
-            tokenAuthRequest(mEmail, mPass) {
+            tokenAuthRequest(mEmail, mPass) { prefSet ->
+                val editor = mSettings.edit()
+                editor.putStringSet(APP_PREFERENCES_TOKEN, prefSet )
+                editor.apply()
                 restartActivity()
             }
         }

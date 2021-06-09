@@ -117,3 +117,10 @@ fun checkInternet(function: () -> Unit ){
         replaceFragment(NoInternetFragment())
     }
 }
+
+
+fun isNumber(input: String): Boolean {
+    val integerChars = '0'..'9'
+    var dotOccurred = 0
+    return input.all { it in integerChars || it == '.' && dotOccurred++ < 1 }
+}

@@ -2,20 +2,26 @@ package com.example.Alexandria.ui.screens.settings
 
 import androidx.fragment.app.Fragment
 import com.example.Alexandria.R
+import com.example.Alexandria.database.mSettings
+import com.example.Alexandria.ui.screens.base.BaseFragment
 import com.example.Alexandria.utilits.APP_ACTIVITY
 import kotlinx.android.synthetic.main.fragment_settings.*
+import restartActivity
 import showToast
+import java.io.File
 
-class SettingsFragment: Fragment(R.layout.fragment_settings) {
+class SettingsFragment: BaseFragment(R.layout.fragment_settings) {
 
 
 
     override fun onResume() {
         super.onResume()
         APP_ACTIVITY.title = "Настройки"
-        APP_ACTIVITY.mAppDrawer.enableDrawer()
         exit_account.setOnClickListener {
-            showToast("Выход из приложения")
+            val editor = mSettings.edit()
+            editor.clear()
+            editor.apply()
+            restartActivity()
         }
 
 

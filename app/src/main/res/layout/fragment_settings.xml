@@ -7,41 +7,35 @@
     tools:context=".ui.screens.settings.SettingsFragment">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/exit_account"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
         android:clickable="true"
-        app:layout_constraintStart_toStartOf="parent"
-        android:focusable="true">
+        android:focusable="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/image_settings_exit_account"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/colorAccent"
-            android:contentDescription="Exit"
-            android:clickable="true"
             android:paddingStart="@dimen/app_margin"
             android:src="@drawable/ic_btn_action_menu_exit"
             app:layout_constraintBottom_toBottomOf="@id/separator_exit"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:focusable="true" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/settings_exit_account"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@color/colorAccent"
-            android:paddingStart="@dimen/app_margin"
-            android:clickable="true"
+            style="@style/normalText"
             android:text="Выход из аккаунта"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/normalText"
             app:layout_constraintStart_toEndOf="@id/image_settings_exit_account"
             app:layout_constraintBottom_toBottomOf="@id/separator_exit"
-            app:layout_constraintTop_toTopOf="parent"
-            android:focusable="true" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <View
             android:id="@+id/separator_exit"

@@ -1,4 +1,4 @@
-package com.example.Alexandria.ui.screens.course
+package com.example.Alexandria.ui.screens.course.task
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -23,7 +23,10 @@ class AuthorAdapter: RecyclerView.Adapter<AuthorAdapter.MainListHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.author_item, parent, false)
-        val holder = MainListHolder(view)
+        val holder =
+            MainListHolder(
+                view
+            )
         Log.d("1",listItems.toString())
         return holder
     }
