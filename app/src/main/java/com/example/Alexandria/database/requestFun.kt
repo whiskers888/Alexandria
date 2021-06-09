@@ -20,9 +20,21 @@ fun tokenAuthRequest(mEmail: String, mPass: String, function: () -> Unit) {
     val getToken =object: StringRequest(Method.POST, tokenAuthR,
         Response.Listener<String> { response ->
             responseInfoToken = gson.fromJson(response, InfoToken::class.java)
-            token["Cookie"] = "authToken="+responseInfoToken.data.accessToken
-            showToast("Token is received: ${token["Cookie"]?.substring(0,25)}")
-            function()
+            if (responseInfoToken.msg == "Логин или пароль введен не верно"){
+                showToast(responseInfoToken.data.msg)
+            }else{
+                val editor = mSettings.edit()
+                editor.putString(APP_PREFERENCES_TOKEN, responseInfoToken.data.accessToken)
+                editor.apply()
+                editor.putString(APP_PREFERENCES_ID,  responseInfoToken.data.data.id.toString())
+                editor.apply()
+
+
+//            token["Cookie"] = "authToken="+responseInfoToken.data.accessToken
+//            showToast("Token is received: ${token["Cookie"]?.substring(0,25)}")
+                function(
+                )
+            }
         },
         Response.ErrorListener { response ->
             showToast("tokenAuth: That didn't work!${response.networkResponse.statusCode}") }){
@@ -32,8 +44,8 @@ fun tokenAuthRequest(mEmail: String, mPass: String, function: () -> Unit) {
         @Throws(AuthFailureError::class)
         override fun getBody(): ByteArray {
             val payload = HashMap<String, String>()
-            payload["userName"] = "student" // student // justie.howard@gmail.com
-            payload["password"] = "testMe" // testMe // s83
+            payload["userName"] = mEmail // student // justie.howard@gmail.com
+            payload["password"] = mPass // testMe // s83
             return JSONObject(payload as Map<*, *>).toString().toByteArray()
         }
     }
@@ -41,7 +53,7 @@ fun tokenAuthRequest(mEmail: String, mPass: String, function: () -> Unit) {
 }
 
 fun getInfoStud(function: () -> Unit) {
-    val url = getUserInfoR+responseInfoToken.data.data.id
+    val url = getUserInfoR+ id
     val stringRequest =object: StringRequest(Method.GET, url,
         Response.Listener<String> { response ->
             responseInfoStud = gson.fromJson(response, UserInfo::class.java)
@@ -63,7 +75,7 @@ fun getInfoStud(function: () -> Unit) {
 }
 
 fun getFeedStud(function: () -> Unit) {
-    val url = getFeedStudR+responseInfoToken.data.data.id
+    val url = getFeedStudR+id
     val getFeedStud =object: StringRequest(Method.GET, url,
         Response.Listener<String> { response ->
             responseFeedStud = gson.fromJson(response, FeedStud::class.java)
@@ -85,7 +97,7 @@ fun getFeedStud(function: () -> Unit) {
 }
 
 fun getAvgMark(function: () -> Unit) {
-    val url = avgScoreR+responseInfoToken.data.data.id
+    val url = avgScoreR+id
     val getAvgMark =object: StringRequest(Method.GET, url,
         Response.Listener<String> { response ->
             responseAvgStud = gson.fromJson(response, AvgMark::class.java)

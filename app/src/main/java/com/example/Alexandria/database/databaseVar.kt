@@ -1,5 +1,6 @@
 package com.example.Alexandria.database
 
+import android.content.SharedPreferences
 import com.example.Alexandria.requestDataClass.*
 
 
@@ -15,6 +16,7 @@ lateinit var responseSendMail:SendMail
 lateinit var responseListCourse:ListCourse
 lateinit var responseCourseThemes:СourseThemesFile
 lateinit var responseCourseInfo:CourseInform
+lateinit var id:String
 
 
 
@@ -39,3 +41,11 @@ const val getCourseThemesR = "$host/ElectronicEducation/ListCourseThemes?courseI
 const val getInfoTaskR = "$host/ElectronicEducation/ListCourseStudents?courseID="
 const val findUserR = "$host/Mail/Find/Students?fio="
 const val uploadFileR = "https://test.mmis.ru/api/ElectronicEducation/FileSave"
+
+
+//SharedPreferences
+
+lateinit var mSettings: SharedPreferences
+const val APP_PREFERENCES = "token_key"
+const val APP_PREFERENCES_TOKEN = ""
+const val APP_PREFERENCES_ID = ""

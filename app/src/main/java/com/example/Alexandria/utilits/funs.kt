@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.Alexandria.MainActivity
 import com.example.Alexandria.R
+import com.example.Alexandria.ui.screens.NoInternetFragment
 import com.example.Alexandria.utilits.APP_ACTIVITY
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
@@ -85,7 +86,7 @@ fun showPreload(viewPreload:ImageView){
     Glide.with(APP_ACTIVITY).load(R.drawable.preloader).into(viewPreload)
 }
 
-fun isOnline(context: Context): Boolean {
+private fun isOnline(context: Context): Boolean {
     val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     val capabilities =
@@ -107,4 +108,12 @@ fun isOnline(context: Context): Boolean {
         }
     }
     return false
+}
+
+fun checkInternet(function: () -> Unit ){
+    if(isOnline(APP_ACTIVITY)){
+        function()
+    }else{
+        replaceFragment(NoInternetFragment())
+    }
 }

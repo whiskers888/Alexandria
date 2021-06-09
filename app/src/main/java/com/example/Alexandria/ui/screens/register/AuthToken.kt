@@ -1,9 +1,11 @@
 package com.example.Alexandria.ui.screens.register
 
+import android.util.Log
 import androidx.fragment.app.Fragment
 import com.example.Alexandria.R
-import com.example.Alexandria.database.tokenAuthRequest
+import com.example.Alexandria.database.*
 import kotlinx.android.synthetic.main.fragment_auth.*
+import restartActivity
 import showToast
 
 class AuthToken : Fragment(R.layout.fragment_auth) {
@@ -23,7 +25,7 @@ class AuthToken : Fragment(R.layout.fragment_auth) {
             mEmail = register_input_login.text.toString()
             mPass = register_input_pass.text.toString()
             tokenAuthRequest(mEmail, mPass) {
-
+                restartActivity()
             }
         }
     }
