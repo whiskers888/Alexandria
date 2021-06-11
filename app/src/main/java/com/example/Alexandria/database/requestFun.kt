@@ -16,20 +16,18 @@ lateinit var token: MutableMap<String, String>
 
 val queue = Volley.newRequestQueue(APP_ACTIVITY)
 
-fun tokenAuthRequest(mEmail: String, mPass: String, function: (prefSet:LinkedHashSet<String>) -> Unit) {
+fun tokenAuthRequest(mEmail: String, mPass: String, function: (prefToken:String, prefID:Int) -> Unit) {
     val getToken =object: StringRequest(Method.POST, tokenAuthR,
         Response.Listener<String> { response ->
             responseInfoToken = gson.fromJson(response, InfoToken::class.java)
             if (responseInfoToken.msg == "Логин или пароль введен не верно"){
                 showToast(responseInfoToken.data.msg)
             }else{
-
-                val prefSet = LinkedHashSet<String>()
-                prefSet.add(responseInfoToken.data.data.id.toString())
-                prefSet.add(responseInfoToken.data.accessToken)
+                val prefID = responseInfoToken.data.data.id
+                val prefToken = responseInfoToken.data.accessToken
 //            token["Cookie"] = "authToken="+responseInfoToken.data.accessToken
 //            showToast("Token is received: ${token["Cookie"]?.substring(0,25)}")
-                function( prefSet
+                function( prefToken,prefID
                 )
             }
         },

@@ -1,5 +1,6 @@
 package com.example.Alexandria.ui.screens.course.task
 
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.example.Alexandria.R
 import com.example.Alexandria.database.*
@@ -33,14 +34,12 @@ class InfoTaskFragment(private val courseID: String) : BaseFragment(R.layout.fra
     }
     private fun initAuthorAdapter() {
         mRecyclerViewAuthor = author_list
-        mAuthorAdapter =
-            AuthorAdapter()
-
+        mAuthorAdapter = AuthorAdapter()
         val listAuthor = responseCourseInfo.data.authorsList
+        Log.d("AUthor",listAuthor.toString())
         for (i in listAuthor) {
             mAuthorAdapter.updateListItems(i)
         }
-
         mRecyclerViewAuthor.adapter = mAuthorAdapter
     }
 

@@ -20,6 +20,7 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.MainListHolder>(){
     private var listItems = mutableListOf<ListSelectedTasks>()
 
     class MainListHolder(view: View): RecyclerView.ViewHolder(view){
+        val notationTask = view.notation_task
        val nameTask:TextView = view.name_disc
         val timeTask:TextView = view.time_task
         val statusTask:TextView = view.status_task
@@ -44,7 +45,11 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.MainListHolder>(){
         }
         holder.nameTask.text = listItems[position].nameTask
         holder.timeTask.text = listItems[position].periodRealization
-
+        if (listItems[position].taskExpired.notation.isNullOrEmpty()){
+            holder.notationTask.visibility = View.GONE
+        }else{
+            holder.notationTask.text = listItems[position].taskExpired.notation
+        }
         holder.uploadFile.setOnClickListener{
             showToast("Ошибка")
         }

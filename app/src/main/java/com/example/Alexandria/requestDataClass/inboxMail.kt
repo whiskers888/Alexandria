@@ -36,7 +36,7 @@ data class MessagesInboxMail (
     @SerializedName("userIdToMessage") var userIdToMessage : String,
     @SerializedName("emailUserID") var emailUserID : String,
     @SerializedName("message") var message : MessageInboxMail,
-    @SerializedName("files") var files : List<String>
+    @SerializedName("files") var files : List<InputFiles>
 
 )
 
@@ -54,7 +54,7 @@ data class MessageInboxMail (
     @SerializedName("dispatchDate") var dispatchDate : String,
     @SerializedName("attachment") var attachment : String,
     @SerializedName("disciplineID") var disciplineID : String,
-    @SerializedName("files") var files : List<String>,
+    @SerializedName("files") var files : List<InputFiles>,
     @SerializedName("type") var type : Type
 
 )
@@ -65,5 +65,17 @@ data class Type (
     @SerializedName("type") var type : String,
     @SerializedName("description") var description : String,
     @SerializedName("comment") var comment : String
+
+)
+data class InputFiles (
+
+    @SerializedName("attachmentID") var attachmentID : Int,
+    @SerializedName("messageID") var messageID : Int,
+    @SerializedName("fileName") var fileName : String,
+    @SerializedName("path") var path : String,
+    @SerializedName("size") var size : Int,
+    @SerializedName("typeFile") var typeFile : String,
+    @SerializedName("userID") var userID : Int,
+    @SerializedName("sessionID") var sessionID : String
 
 )

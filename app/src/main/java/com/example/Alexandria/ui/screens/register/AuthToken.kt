@@ -24,10 +24,13 @@ class AuthToken : Fragment(R.layout.fragment_auth) {
         } else {
             mEmail = register_input_login.text.toString()
             mPass = register_input_pass.text.toString()
-            tokenAuthRequest(mEmail, mPass) { prefSet ->
-                val editor = mSettings.edit()
-                editor.putStringSet(APP_PREFERENCES_TOKEN, prefSet )
-                editor.apply()
+            tokenAuthRequest(mEmail, mPass) { prefToken,prefID ->
+                val editorToken = mSettingsToken.edit()
+                editorToken.putString(APP_PREFERENCES_TOKEN, prefToken )
+                editorToken.apply()
+                val editorID = mSettingsID.edit()
+                editorID.putString(APP_PREFERENCES_ID,prefID.toString())
+                editorID.apply()
                 restartActivity()
             }
         }

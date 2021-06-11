@@ -47,6 +47,9 @@ const val uploadFileR = "https://test.mmis.ru/api/ElectronicEducation/FileSave"
 
 //SharedPreferences
 
-lateinit var mSettings: SharedPreferences
+lateinit var mSettingsToken: SharedPreferences
+lateinit var mSettingsID:SharedPreferences
 const val APP_PREFERENCES = "token_key"
 const val APP_PREFERENCES_TOKEN = ""
+const val APP_PREFERENCES_2 = "ID_key"
+const val APP_PREFERENCES_ID = ""
