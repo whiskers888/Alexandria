@@ -5,11 +5,12 @@ import checkInternet
 import com.example.Alexandria.utilits.APP_ACTIVITY
 
 
-open class BaseFragment(layout:Int) : Fragment(layout) {
+open class BaseFragment(layout: Int) : Fragment(layout) {
 
     override fun onStart() {
         super.onStart()
         APP_ACTIVITY.mAppDrawer.disableDrawer()
         checkInternet { }
+
     }
 }

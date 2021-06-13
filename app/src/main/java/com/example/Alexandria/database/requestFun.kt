@@ -48,8 +48,7 @@ fun tokenAuthRequest(mEmail: String, mPass: String, function: (prefToken:String,
 }
 
 fun getInfoStud(function: () -> Unit) {
-    //TODO ПОМЕНЯТЬ ТУТ 5 на ID USER
-    val url = getUserInfoR+ "5"
+    val url = getUserInfoR+ id
     val stringRequest =object: StringRequest(Method.GET, url,
         Response.Listener<String> { response ->
             responseInfoStud = gson.fromJson(response, UserInfo::class.java)

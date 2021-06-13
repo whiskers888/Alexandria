@@ -6,7 +6,9 @@ import com.example.Alexandria.ui.screens.base.BaseFragment
 import com.example.Alexandria.utilits.APP_ACTIVITY
 import kotlinx.android.synthetic.main.mail_message.*
 
-class AboutInMailFragment(messages: MessagesInboxMail) : BaseFragment(R.layout.mail_message) {
+class AboutInMailFragment(messages: MessagesInboxMail) : BaseFragment(
+    R.layout.mail_message
+) {
 
     val fullname = messages.userIdFromMessage
     val theme = messages.message.theme

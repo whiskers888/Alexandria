@@ -45,8 +45,6 @@ class MainActivity : AppCompatActivity() {
     private fun initFunc() {
 //        Функция инициализирует функциональность приложения
         setSupportActionBar(mToolbar)
-        //TODO ОБЯЗАТЕЛЬНО ДОПИЛИТЬ SHAREDPREFERENCES
-        // Ложить id в другой свой отдельный файл
         if(mSettingsToken.contains(APP_PREFERENCES_TOKEN) && mSettingsID.contains(APP_PREFERENCES_ID) ) {
             val preferID = mSettingsID.getString(APP_PREFERENCES_ID, "")
             id = preferID.toString()

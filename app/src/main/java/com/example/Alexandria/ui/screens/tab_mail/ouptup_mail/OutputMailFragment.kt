@@ -8,15 +8,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.Alexandria.R
 import com.example.Alexandria.database.getOutputMail
 import com.example.Alexandria.database.responseOutputMail
+import com.example.Alexandria.ui.screens.base.BaseFragment
 import kotlinx.android.synthetic.main.tab_input_mail.*
 
-class OutputMailFragment : Fragment() {
+class OutputMailFragment : BaseFragment(R.layout.tab_output_mail) {
 
     private lateinit var mRecyclerView: RecyclerView
     private lateinit var mAdapter: OutputMailAdapter
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?) =
-        inflater.inflate(R.layout.tab_output_mail, container, false)!!
 
     override fun onResume() {
         super.onResume()

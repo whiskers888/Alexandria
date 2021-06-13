@@ -8,7 +8,6 @@ import com.example.Alexandria.database.getAvgMark
 import com.example.Alexandria.database.responseAvgStud
 import com.example.Alexandria.database.responseInfoStud
 import com.example.Alexandria.ui.screens.base.BaseFragment
-import com.example.Alexandria.ui.screens.main_list.MainListAdapter
 import com.example.Alexandria.utilits.APP_ACTIVITY
 import downloadAndSetImage
 import kotlinx.android.synthetic.main.fragment_profile_user.*

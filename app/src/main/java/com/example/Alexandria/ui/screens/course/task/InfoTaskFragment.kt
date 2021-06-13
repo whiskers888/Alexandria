@@ -8,7 +8,9 @@ import com.example.Alexandria.ui.screens.base.BaseFragment
 import com.example.Alexandria.utilits.APP_ACTIVITY
 import kotlinx.android.synthetic.main.fragment_task.*
 
-class InfoTaskFragment(private val courseID: String) : BaseFragment(R.layout.fragment_task){
+class InfoTaskFragment(private val courseID: String) : BaseFragment(
+    R.layout.fragment_task
+){
 
     private lateinit var mRecyclerViewAuthor: RecyclerView
     private lateinit var mRecyclerViewStructureCourse: RecyclerView
