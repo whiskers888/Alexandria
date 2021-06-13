@@ -30,9 +30,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/author_list"
-            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-            android:orientation="horizontal"
-            app:spanCount="1"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            android:orientation="vertical"
             android:layout_marginEnd="@dimen/app_small_margin"
             android:layout_marginStart="@dimen/app_small_margin"
             tools:listitem="@layout/author_item"
@@ -44,7 +43,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/structure_file"
         android:id="@+id/structure_course"
         android:layout_marginTop="@dimen/app_margin"
         app:layout_constraintTop_toBottomOf="@id/author">
@@ -76,40 +76,44 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/structure_course_name"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/structure_file"
         android:layout_marginTop="@dimen/app_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/structure_course">
+
         <TextView
             android:id="@+id/file_course"
+            style="@style/normalText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Материалы курса"
-            android:background="@drawable/btn_try_internet"
-            android:backgroundTint="@color/colorPrimary"
-            style="@style/normalText"
-            android:paddingStart="@dimen/app_margin"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginStart="@dimen/app_small_margin"
             android:layout_marginEnd="@dimen/app_small_margin"
-            android:textColor="@color/colorAccentSmallDark"/>
+            android:background="@drawable/btn_try_internet"
+            android:backgroundTint="@color/colorPrimary"
+            android:paddingStart="@dimen/app_margin"
+            android:text="Материалы курса"
+            android:textColor="@color/colorAccentSmallDark"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list_file"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-            android:orientation="horizontal"
-            app:spanCount="4"
-            android:layout_marginEnd="@dimen/app_small_margin"
             android:layout_marginStart="@dimen/app_small_margin"
-            tools:listitem="@layout/file_item"
+            android:layout_marginEnd="@dimen/app_small_margin"
             android:background="@color/colorAccent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/file_course"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/file_course"
+            app:spanCount="4"
+            tools:listitem="@layout/file_item" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

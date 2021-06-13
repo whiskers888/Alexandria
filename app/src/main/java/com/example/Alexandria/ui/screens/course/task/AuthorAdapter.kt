@@ -24,14 +24,13 @@ class AuthorAdapter: RecyclerView.Adapter<AuthorAdapter.MainListHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.author_item, parent, false)
         val holder = MainListHolder(view)
-        Log.d("1",listItems.toString())
         return holder
     }
 
     override fun getItemCount(): Int = listItems.size
 
     override fun onBindViewHolder(holder: MainListHolder, position: Int) {
-
+        Log.d("1",listItems.toString())
         if (listItems[position].mainAuthor){
             holder.statusAuthor.text = "Автор"
         }else{
@@ -39,6 +38,8 @@ class AuthorAdapter: RecyclerView.Adapter<AuthorAdapter.MainListHolder>(){
         }
 
         holder.nameAuthor.text = listItems[position].fio
+        Log.d("1",holder.nameAuthor.text.toString())
+        Log.d("1",holder.statusAuthor.text.toString())
 
     }
 

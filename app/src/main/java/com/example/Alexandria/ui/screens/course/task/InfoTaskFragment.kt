@@ -21,8 +21,8 @@ class InfoTaskFragment(private val courseID: String) : BaseFragment(R.layout.fra
         super.onStart()
 //        APP_ACTIVITY.title = "Задания"
         getThemesTask(courseID){
-            initAuthorAdapter()
             APP_ACTIVITY.title = responseCourseInfo.data.courseInfo.discipline
+            initAuthorAdapter()
         }
 
         getInfoCourse(courseID){

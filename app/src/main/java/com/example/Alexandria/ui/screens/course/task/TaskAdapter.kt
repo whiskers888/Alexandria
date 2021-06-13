@@ -21,7 +21,7 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.MainListHolder>(){
 
     class MainListHolder(view: View): RecyclerView.ViewHolder(view){
         val notationTask = view.notation_task
-       val nameTask:TextView = view.name_disc
+        val nameTask:TextView = view.name_disc
         val timeTask:TextView = view.time_task
         val statusTask:TextView = view.status_task
         val uploadFile = view.btn_upload_file
