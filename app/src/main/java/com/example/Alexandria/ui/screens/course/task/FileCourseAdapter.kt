@@ -6,8 +6,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.Alexandria.R
+import com.example.Alexandria.database.host
 import com.example.Alexandria.requestDataClass.ListFiles
+import com.example.Alexandria.utilits.APP_ACTIVITY
 import kotlinx.android.synthetic.main.file_item.view.*
+import openNewTabWindow
 
 
 class FileCourseAdapter: RecyclerView.Adapter<FileCourseAdapter.MainListHolder>(){
@@ -31,7 +34,9 @@ class FileCourseAdapter: RecyclerView.Adapter<FileCourseAdapter.MainListHolder>(
     override fun getItemCount(): Int = listItems.size
 
     override fun onBindViewHolder(holder: MainListHolder, position: Int) {
-
+        holder.itemView.setOnClickListener {
+            openNewTabWindow("https://test.mmis.ru"+listItems[position].link, APP_ACTIVITY)
+        }
         holder.name_file.text = listItems[position].nameFile
 
     }
