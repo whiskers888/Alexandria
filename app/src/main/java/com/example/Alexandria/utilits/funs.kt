@@ -3,6 +3,7 @@ import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
+import android.os.Bundle
 import android.provider.OpenableColumns
 import android.util.Log
 import android.view.inputmethod.InputMethodManager
@@ -131,4 +132,13 @@ fun isNumber(input: String): Boolean {
     val integerChars = '0'..'9'
     var dotOccurred = 0
     return input.all { it in integerChars || it == '.' && dotOccurred++ < 1 }
+}
+
+fun openNewTabWindow(urls: String, context : Context) {
+    val uris = Uri.parse(urls)
+    val intents = Intent(Intent.ACTION_VIEW, uris)
+    val b = Bundle()
+    b.putBoolean("new_window", true)
+    intents.putExtras(b)
+    context.startActivity(intents)
 }
