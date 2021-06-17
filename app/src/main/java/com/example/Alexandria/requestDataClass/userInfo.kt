@@ -51,7 +51,7 @@ data class UserInfo1 (
     @SerializedName("message") var message : String,
     @SerializedName("htmlBlock") var htmlBlock : String,
     @SerializedName("activeSwapPhoto") var activeSwapPhoto : Boolean,
-    @SerializedName("byPassSheets") var byPassSheets : List<String>,
+//    @SerializedName("byPassSheets") var byPassSheets : List<String>,
     @SerializedName("status") var status : Int,
     @SerializedName("ratingActivation") var ratingActivation : Boolean,
     @SerializedName("portfolioIncluded") var portfolioIncluded : Boolean,

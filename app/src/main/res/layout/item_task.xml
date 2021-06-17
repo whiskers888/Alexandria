@@ -33,7 +33,6 @@
         android:id="@+id/status_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Статус"
         android:layout_marginEnd="@dimen/app_margin"
         android:layout_marginTop="@dimen/app_margin"
         app:layout_constraintTop_toTopOf="parent"

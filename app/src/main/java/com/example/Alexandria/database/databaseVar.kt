@@ -28,7 +28,7 @@ lateinit var courseTaskID:String
 // ссылки на API
 const val originalHost = "https://stud.sssu.ru/api"
 const val testHost = "https://test.mmis.ru/api"
-const val host =  testHost
+const val host =  originalHost
 const val tokenAuthR = "$host/tokenauth"
 const val getUserInfoR = "$host/UserInfo/Student?studentID="
 const val getFeedStudR = "$host/Feed?userID="

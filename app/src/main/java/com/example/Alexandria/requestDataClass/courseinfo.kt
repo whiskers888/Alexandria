@@ -25,7 +25,7 @@ data class DataCourseInform (
 
     @SerializedName("courseInfo") var courseInfo : CourseInfo,
     @SerializedName("authorsList") var authorsList : List<AuthorsList>,
-    @SerializedName("paramFormatsFiles") var paramFormatsFiles : String,
+//    @SerializedName("paramFormatsFiles") var paramFormatsFiles : String,
     @SerializedName("maxLengthFileLink") var maxLengthFileLink : Int,
     @SerializedName("maxFileSize") var maxFileSize : String,
     @SerializedName("accessView") var accessView : Boolean
