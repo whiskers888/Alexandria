@@ -10,9 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:listitem="@layout/item_course"
-
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         />
+
+    <TextView
+        android:id="@+id/download_course"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textAlignment="gravity"
+        android:gravity="center"
+        android:visibility="gone"
+        android:textColor="@color/colorPrimary"
+        android:text="Загрузка..."/>
 
     <TextView
         android:id="@+id/no_course"
@@ -20,7 +29,7 @@
         android:layout_height="match_parent"
         android:textAlignment="gravity"
         android:gravity="center"
-        android:visibility="visible"
+        android:visibility="gone"
         android:textColor="@color/colorPrimary"
         android:text="Нету курсов"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

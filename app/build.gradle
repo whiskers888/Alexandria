@@ -63,9 +63,13 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.0'
+    // json2kt
     implementation 'com.google.code.gson:gson:2.8.5'
    // Volley
     implementation 'com.android.volley:volley:1.2.0'
+    // OkHttp3
+    implementation "com.squareup.okhttp3:okhttp:4.7.2"
 
+    //animator
     implementation 'com.github.bumptech.glide:glide:4.9.0'
 }

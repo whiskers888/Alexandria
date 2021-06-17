@@ -18,6 +18,8 @@ lateinit var responseCourseThemes:СourseThemesFile
 lateinit var responseCourseInfo:CourseInform
 lateinit var responseStudTask:StudTask
 lateinit var id:String
+lateinit var courseStudentID:String
+lateinit var courseTaskID:String
 
 
 

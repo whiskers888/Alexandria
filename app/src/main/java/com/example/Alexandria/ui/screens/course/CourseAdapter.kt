@@ -11,6 +11,7 @@ import com.example.Alexandria.ui.screens.course.task.InfoTaskFragment
 import com.example.Alexandria.ui.screens.course.task.TaskFragment
 import com.example.Alexandria.ui.screens.course.task.ViewPagerTaskFragment
 import com.example.Alexandria.utilits.APP_ACTIVITY
+import kotlinx.android.synthetic.main.fragment_list_course.view.*
 import kotlinx.android.synthetic.main.item_course.view.*
 import replaceFragment
 
@@ -21,8 +22,6 @@ class CourseAdapter: RecyclerView.Adapter<CourseAdapter.MainListHolder>(){
     private var listItems = mutableListOf<DataListCourse>()
     private var countSucs = 0
     private var countWait = 0
-
-    val Exception: TextView = APP_ACTIVITY.findViewById(R.id.no_course)
 
     class MainListHolder(view: View): RecyclerView.ViewHolder(view){
         val discipline: TextView = view.item_course_dis
@@ -42,7 +41,6 @@ class CourseAdapter: RecyclerView.Adapter<CourseAdapter.MainListHolder>(){
     override fun getItemCount(): Int = listItems.size
 
     override fun onBindViewHolder(holder: MainListHolder, position: Int) {
-
         holder.itemView.setOnClickListener{
             replaceFragment(
                 ViewPagerTaskFragment(
@@ -53,9 +51,7 @@ class CourseAdapter: RecyclerView.Adapter<CourseAdapter.MainListHolder>(){
 
         if (listItems.isNullOrEmpty()){
             holder.itemView.visibility = View.GONE
-            Exception.visibility = View.VISIBLE
         } else{
-            Exception.visibility = View.GONE
             holder.itemView.visibility = View.VISIBLE
             val lengthTask = listItems[position].stat
             for ( i in lengthTask){

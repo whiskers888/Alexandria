@@ -261,7 +261,6 @@ fun getInfoCourse(courseID:String,function: () -> Unit) {
     val getThemesTask =object: StringRequest(Method.GET, url,
         Response.Listener<String> { response ->
             responseCourseThemes = gson.fromJson(response, СourseThemesFile::class.java)
-            Log.d("1", responseCourseThemes.toString())
             function()
         },
         Response.ErrorListener { response ->
@@ -283,7 +282,6 @@ fun getThemesTask(courseID:String,function: () -> Unit) {
     val getInfoCourse =object: StringRequest(Method.GET, url,
         Response.Listener<String> { response ->
             responseCourseInfo = gson.fromJson(response, CourseInform::class.java)
-            Log.d("1", response)
             function()
         },
         Response.ErrorListener { response ->
@@ -300,10 +298,12 @@ fun getThemesTask(courseID:String,function: () -> Unit) {
     queue.add(getInfoCourse)
 }
 fun getTask(courseID:String,function: () -> Unit) {
-    val url = getTask + courseID // ВЫБРАТЬ КУРС ОБЯЗАТЕЛЬНО
+    val url = getInfoTaskR + courseID // ВЫБРАТЬ КУРС ОБЯЗАТЕЛЬНО
     val getTaskStudent =object: StringRequest(Method.GET, url,
         Response.Listener<String> { response ->
             responseStudTask = gson.fromJson(response, StudTask::class.java)
+            Log.d("getTask", response)
+            Log.d("getTask", responseStudTask.data.toString())
             function()
         },
         Response.ErrorListener { response ->
@@ -319,3 +319,4 @@ fun getTask(courseID:String,function: () -> Unit) {
 // Add the request to the RequestQueue.
     queue.add(getTaskStudent)
 }
+

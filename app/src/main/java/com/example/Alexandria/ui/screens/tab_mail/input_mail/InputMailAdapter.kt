@@ -26,10 +26,7 @@ class InputMailAdapter : RecyclerView.Adapter<InputMailAdapter.MainListHolder>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainListHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_message,parent,false)
-        val holder =
-            MainListHolder(
-                view
-            )
+        val holder =MainListHolder(view)
         return holder
     }
 
@@ -47,7 +44,13 @@ class InputMailAdapter : RecyclerView.Adapter<InputMailAdapter.MainListHolder>()
         val message = listItems[position].message.markdownMessage
         if (message.length > 20){
             holder.userReceivedMessage.text = "${listItems[position].message.markdownMessage.substring(0,20)} ..."
-        } else{
+        } else if(message == null ){
+            if (listItems[position].message.message == null){
+                holder.userReceivedMessage.text = "Пусто"
+            }else {
+                holder.userReceivedMessage.text = listItems[position].message.message
+            }
+        } else {
             holder.userReceivedMessage.text = listItems[position].message.markdownMessage
         }
 

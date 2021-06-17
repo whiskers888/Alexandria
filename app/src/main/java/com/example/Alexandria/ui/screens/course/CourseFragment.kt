@@ -27,6 +27,7 @@ class CourseFragment: BaseFragment(R.layout.fragment_list_course) {
         mAdapter = CourseAdapter()
 
         val listCourse = responseListCourse.data.listCourse
+        
         for (i in listCourse) {
             mAdapter.updateListItems(i)
         }

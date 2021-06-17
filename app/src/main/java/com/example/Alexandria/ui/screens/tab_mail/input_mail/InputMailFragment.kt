@@ -1,6 +1,7 @@
 package com.example.Alexandria.ui.screens.tab_mail.input_mail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -29,6 +30,7 @@ class InputMailFragment : BaseFragment(R.layout.tab_input_mail) {
         mAdapter =
             InputMailAdapter()
         val message = responseInboxMail.data.messages
+        Log.d("MessageAlex",message.toString())
         for ( i in message){
             mAdapter.updateListItems(i)
         }

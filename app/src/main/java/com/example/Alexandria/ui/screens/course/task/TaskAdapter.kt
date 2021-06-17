@@ -7,17 +7,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.Alexandria.R
-import com.example.Alexandria.database.uploadFileR
-import com.example.Alexandria.requestDataClass.ListSelectedTasks
-import kotlinx.android.synthetic.main.item_course_grade.view.*
+import com.example.Alexandria.database.courseStudentID
+import com.example.Alexandria.database.courseTaskID
+import com.example.Alexandria.requestDataClass.ListTask
+import com.example.Alexandria.utilits.APP_ACTIVITY
 import kotlinx.android.synthetic.main.item_task.view.*
-import org.w3c.dom.Text
-import showToast
 
 class TaskAdapter : RecyclerView.Adapter<TaskAdapter.MainListHolder>(){
 
 
-    private var listItems = mutableListOf<ListSelectedTasks>()
+    private var listItems = mutableListOf<ListTask>()
 
     class MainListHolder(view: View): RecyclerView.ViewHolder(view){
         val notationTask = view.notation_task
@@ -37,26 +36,35 @@ class TaskAdapter : RecyclerView.Adapter<TaskAdapter.MainListHolder>(){
 
     override fun onBindViewHolder(holder: MainListHolder, position: Int) {
 
-        when(listItems[position].taskExpired.statusID){
+        when(listItems[position].statusID){
             1 -> holder.statusTask.text = "Просрочено"
-            2 -> holder.statusTask.text = "В проверка"
+            2 -> holder.statusTask.text = "В проверке"
             3 -> holder.statusTask.text = "На доработке"
             4 -> holder.statusTask.text = "Выполнено"
         }
+        if (listItems[position].statusID == 4){
+            holder.uploadFile.visibility = View.GONE
+        } else{
+            holder.uploadFile.setOnClickListener{
+                courseStudentID = listItems[position].courseID.toString()
+                courseTaskID = listItems[position].courseTaskID.toString()
+                APP_ACTIVITY.downloadFile()
+            }
+        }
+
         holder.nameTask.text = listItems[position].nameTask
         holder.timeTask.text = listItems[position].periodRealization
-        if (listItems[position].taskExpired.notation.isNullOrEmpty()){
+        if (listItems[position].notation.isNullOrEmpty()){
             holder.notationTask.visibility = View.GONE
         }else{
-            holder.notationTask.text = listItems[position].taskExpired.notation
-        }
-        holder.uploadFile.setOnClickListener{
-            showToast("Ошибка")
+            holder.notationTask.text = "Примечание: "+listItems[position].notation
         }
     }
 
-    fun updateListItems(item: ListSelectedTasks){
+
+    fun updateListItems(item: ListTask){
         listItems.add(item)
         notifyItemInserted(listItems.size)
+
     }
 }

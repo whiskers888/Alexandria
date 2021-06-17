@@ -8,12 +8,16 @@ import android.util.Log
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.Alexandria.MainActivity
 import com.example.Alexandria.R
 import com.example.Alexandria.ui.screens.NoInternetFragment
 import com.example.Alexandria.utilits.APP_ACTIVITY
+import com.example.Alexandria.utilits.READ_FILES
+import com.example.Alexandria.utilits.WRITE_FILES
+import com.example.Alexandria.utilits.checkPermission
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.*
@@ -117,6 +121,10 @@ fun checkInternet(function: () -> Unit ){
         replaceFragment(NoInternetFragment())
     }
 }
+
+
+
+
 
 
 fun isNumber(input: String): Boolean {

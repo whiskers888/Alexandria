@@ -25,7 +25,7 @@ class TaskFragment(private val courseID: String) : BaseFragment(
         mRecyclerView = task_list
         mAdapter = TaskAdapter()
 
-        val listCourse = responseStudTask.data.listSelectedTasks
+        val listCourse = responseStudTask.data.list
         for (i in listCourse) {
             mAdapter.updateListItems(i)
         }
