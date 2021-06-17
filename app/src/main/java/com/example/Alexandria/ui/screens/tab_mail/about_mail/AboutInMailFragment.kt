@@ -17,8 +17,12 @@ class AboutInMailFragment(messages: MessagesInboxMail) : BaseFragment(
         super.onStart()
         APP_ACTIVITY.title = "Сообщение"
         toolbar_chat_fullname.text = fullname
-        toolbar_chat_status.text = theme
-        message_mail.text = msg
-
+        if (msg == null){
+            message_mail.text = theme
+            toolbar_chat_status.text = "Системное сообщение"
+        }else {
+            message_mail.text = msg
+            toolbar_chat_status.text = theme
+        }
     }
 }

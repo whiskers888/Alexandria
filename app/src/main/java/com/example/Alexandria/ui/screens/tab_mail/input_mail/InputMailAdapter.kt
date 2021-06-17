@@ -42,22 +42,27 @@ class InputMailAdapter : RecyclerView.Adapter<InputMailAdapter.MainListHolder>()
         }
 
         val message = listItems[position].message.markdownMessage
-        if (message.length > 20){
-            holder.userReceivedMessage.text = "${listItems[position].message.markdownMessage.substring(0,20)} ..."
-        } else if(message == null ){
+        if(message == null ){
             if (listItems[position].message.message == null){
                 holder.userReceivedMessage.text = "Пусто"
             }else {
                 holder.userReceivedMessage.text = listItems[position].message.message
             }
-        } else {
-            holder.userReceivedMessage.text = listItems[position].message.markdownMessage
+
+            holder.userReceivedThemes.text = ""
+        }else {
+            if (message.length > 20){
+                holder.userReceivedMessage.text = "${listItems[position].message.markdownMessage.substring(0,20)} ..."
+            } else {
+                holder.userReceivedMessage.text = listItems[position].message.markdownMessage
+            }
+            holder.userReceivedThemes.text = listItems[position].message.theme
         }
+
 
         holder.userReceivedFullname.text = "От: ${listItems[position].userIdFromMessage}"
 //        holder.userReceivedPhoto.downloadAndSetImage("https://stud.sssu.ru/${listItems[position].photoLinkUserID}")
 //        holder.userReceivedTime.text = listItems[position].dateRead
-        holder.userReceivedThemes.text = listItems[position].message.theme
 
     }
 
